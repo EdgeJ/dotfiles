@@ -1,0 +1,19 @@
+[user]
+	name = John Edge
+	email = edge.jm@gmail.com
+[color]
+	ui = true
+[pull]
+	rebase = true
+[push]
+	default = current
+[fetch]
+	prune = true
+[core]
+	autocrlf = false
+	preloadindex = true
+	fscache = true
+	editor = /usr/bin/vim
+	excludefiles = ~/.gitignore_global
+[log]
+	decorate = short
