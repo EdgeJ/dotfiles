@@ -45,6 +45,10 @@ imap <esc>Ox 8
 imap <esc>Oy 9
 imap <esc>Op 0
 imap <esc>On .
+"map buffer navigation keys
+nnoremap <C-n> :bnext<CR>
+nnoremap <C-p> :bprevious<CR>
+
 "------------------------------------"
 "set syntax highlighting and display settings"
 syntax on
@@ -52,10 +56,15 @@ filetype on
 set background=dark
 set number
 
-"set Python style tabbing"
-"set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+"powerline font settings if running in gvim
+if has("gui_macvim")
+    let g:airline_powerline_fonts = 1
+endif
+
+"set tabs to 4 spaces"
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "load Google style Python tabbing
-:source ~/Documents/google-style-guide/google_python_style.vim
+au BufRead,BufNewFile *.py :source ~/Documents/google-style-guide/google_python_style.vim
 
 "command aliases
 command E Explore
