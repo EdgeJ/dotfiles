@@ -57,14 +57,16 @@ set background=dark
 set number
 
 "powerline font settings if running in gvim
-if has("gui_macvim")
+if has("gui")
     let g:airline_powerline_fonts = 1
 endif
 
 "set tabs to 4 spaces"
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
 "load Google style Python tabbing
-au BufRead,BufNewFile *.py :source ~/Documents/google-style-guide/google_python_style.vim
+if not exists(*GetGooglePythonIndent)
+    au BufRead,BufNewFile *.py :source ~/.vim/google_python_style.vim
+endif
 
 "command aliases
 command E Explore
