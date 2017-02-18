@@ -5,5 +5,5 @@ let g:os = substitute(system('uname'), '\n', '', '')
 if g:os == "Darwin"
     set guifont=Meslo\ LG\ L\ Regular\ for\ Powerline:h12
 elseif g:os == "Linux"
-    set guifont=Fira\ Mono\ 10
+    set guifont=Roboto\ Mono\ for\ Powerline\ 11
 endif
