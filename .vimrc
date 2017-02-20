@@ -1,3 +1,16 @@
+"disable settings for large files"
+function LargeFile()
+    set eventignore+=FileType
+    setlocal bufhidden=unload
+    setlocal undolevels=-1
+    autocmd VimEnter * echo "This file is larger than " . (g:LargeFile / 1024 / 1024) . "MB, so some options have been disabled."
+endfunction
+
+let g:LargeFile = 1024 * 1024 * 20
+augroup LargeFile
+    autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+augroup END
+
 "load Vundle settings"
 :source ~/.vim/vundle.vim
 
@@ -63,10 +76,9 @@ endif
 
 "set tabs to 4 spaces"
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
-"load Google style Python tabbing
-if not exists(*GetGooglePythonIndent)
-    au BufRead,BufNewFile *.py :source ~/.vim/google_python_style.vim
-endif
+"with a few exceptions
+au BufNewFile,BufRead *.js, *.html, *.css, *.yaml
+    \ set tabstop=2 shiftwidth=2 softtabstop=2
 
 "command aliases
 command E Explore
@@ -93,19 +105,6 @@ augroup end
 
 "don't format md files"
 au BufRead,BufNewFile *.md set filetype=text
-
-"disable settings for large files"
-let g:LargeFile = 1024 * 1024 * 20
-augroup LargeFile
-    autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
-augroup END
-
-function LargeFile()
-    set eventignore+=FileType
-    setlocal bufhidden=unload
-    setlocal undolevels=-1
-    autocmd VimEnter * echo "This file is larger than " . (g:LargeFile / 1024 / 1024) . "MB, so some options have been disabled."
-endfunction
 
 "backspace settings"
 set backspace=indent,eol,start
