@@ -14,6 +14,6 @@
 	preloadindex = true
 	fscache = true
 	editor = /usr/bin/vim
-	excludefiles = ~/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [log]
 	decorate = short
