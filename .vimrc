@@ -75,11 +75,15 @@ if has("gui")
 endif
 
 "set tabs to 4 spaces"
-set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+set tabstop=4 shiftwidth=4 softtabstop=4 expandtab textwidth=79
 "with a few exceptions
 au BufNewFile,BufRead *.js, *.html, *.css, *.yaml
     \ set tabstop=2 shiftwidth=2 softtabstop=2
-
+"load Google style Python tabbing
+"if !exists("*GetGooglePythonIndent")
+"    au BufRead,BufNewFile *.py :source ~/.vim/google-python-style.vim
+"endif
+"
 "command aliases
 command E Explore
 command Q qa
