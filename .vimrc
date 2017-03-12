@@ -1,3 +1,6 @@
+"what os are we
+let g:os = substitute(system('uname'), '\n', '', '')
+
 "disable settings for large files"
 function LargeFile()
     set eventignore+=FileType
@@ -94,7 +97,11 @@ set mouse=a
 set ttymouse=xterm
 
 "enable copying to os clipboard"
-set clipboard=unnamed
+if g:os == "Darwin"
+    set clipboard=unnamed
+else
+    set clipboard=unnamedplus
+endif
 
 "highlight search results"
 set hlsearch
