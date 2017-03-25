@@ -82,15 +82,12 @@ set tabstop=4 shiftwidth=4 softtabstop=4 expandtab textwidth=79
 "with a few exceptions
 au BufNewFile,BufRead *.js, *.html, *.css, *.yaml
     \ set tabstop=2 shiftwidth=2 softtabstop=2
-"load Google style Python tabbing
-"if !exists("*GetGooglePythonIndent")
-"    au BufRead,BufNewFile *.py :source ~/.vim/google-python-style.vim
-"endif
-"
+
 "command aliases
 command E Explore
 command Q qa
 command Resize vertical resize 80
+
 "enable mouse settings"
 set ttyfast
 set mouse=a
@@ -103,8 +100,16 @@ else
     set clipboard=unnamedplus
 endif
 
-"highlight search results"
+"search settings"
 set hlsearch
+set ignorecase
+"open vimgrep always in quickfix"
+augroup grepwindow
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* botright cwindow
+    autocmd QuickFixCmdPost l*    botright lwindow
+augroup END
+
 "log editing settings
 augroup logfiles
     au BufNewFile *.log set tw=79
@@ -113,9 +118,6 @@ augroup logfiles
         au BufNewFile *.decom.log 0r ~/.vim/decom.skel
     augroup end
 augroup end
-
-"don't format md files"
-au BufRead,BufNewFile *.md set filetype=text
 
 "backspace settings"
 set backspace=indent,eol,start
