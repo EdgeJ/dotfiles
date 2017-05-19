@@ -48,6 +48,8 @@ ZSH_THEME="apple"
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
+autoload -U zmv
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -70,6 +72,7 @@ alias ll="ls -laF"
 alias list="ls -lF"
 alias h="history | tail -n 10"
 alias jump="ssh jump"
+alias mybranches="git branch -r | grep ${USER}"
 
 mdch(){
     mkdir "$*"
@@ -79,7 +82,6 @@ mdch(){
 is(){
     ps aux | grep -i "$@" | grep -v grep
 }
-
 
 ## Keypad
 # # 0 . Enter
