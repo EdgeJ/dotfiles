@@ -13,7 +13,7 @@ let g:syntastic_aggregate_errors = 1
 let g:syntastic_eruby_checkers = ['ruby']
 let g:syntastic_puppet_checkers = ['puppetlint']
 let g:syntastic_puppet_puppetlint_args = 
-    \ "--no-80chars-check --no-arrow_alignment-check --no-selector_inside_resource-check"
+    \ "--no-80chars-check --no-140chars-check --no-arrow_alignment-check"
 let g:syntastic_puppet_puppetlint_sort = 1
 let g:syntastic_python_checkers = ['pylint', 'flake8']
 let g:syntastic_python_flake8_args = '--ignore=F403,F405'

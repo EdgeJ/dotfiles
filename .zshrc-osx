@@ -74,6 +74,11 @@ alias h="history | tail -n 10"
 alias jump="ssh jump"
 alias mybranches="git branch -r | grep ${USER}"
 
+# use homebrew vim if it's installed
+if [[ -f "/usr/local/bin/vim" ]]; then
+    alias vim="/usr/local/bin/vim"
+fi
+
 mdch(){
     mkdir "$*"
     cd "$*"
@@ -105,3 +110,6 @@ is(){
 # bindkey -s "^[OS" "-"
 # bindkey -s "^[OR" "*"
 # bindkey -s "^[OQ" "/"
+#
+# Source locally managed zsh configs
+source ~/.zshrc.d/*
