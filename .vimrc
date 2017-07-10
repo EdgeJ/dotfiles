@@ -111,13 +111,9 @@ augroup grepwindow
     autocmd QuickFixCmdPost l*    botright lwindow
 augroup END
 
-"log editing settings
-augroup logfiles
-    au BufNewFile *.log set tw=79
-    "decom worklog boilerplate"
-    augroup decom.log
-        au BufNewFile *.decom.log 0r ~/.vim/decom.skel
-    augroup end
+"associate *.j2 files with htmldjango filetype
+augroup jinjatemplates
+    au BufRead,BufNewFile *.j2 setfiletype htmldjango
 augroup end
 
 "backspace settings"

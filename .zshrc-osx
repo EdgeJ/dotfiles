@@ -54,7 +54,7 @@ autoload -U zmv
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git brew jira osx vagrant z)
 
 source $ZSH/oh-my-zsh.sh
 #
@@ -112,4 +112,6 @@ is(){
 # bindkey -s "^[OQ" "/"
 #
 # Source locally managed zsh configs
-source ~/.zshrc.d/*
+for config in ~/.zshrc.d/*(.); do
+    source $config
+done
