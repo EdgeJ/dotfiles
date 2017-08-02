@@ -15,9 +15,11 @@ let g:syntastic_puppet_checkers = ['puppetlint']
 let g:syntastic_puppet_puppetlint_args = 
     \ "--no-80chars-check --no-140chars-check --no-arrow_alignment-check"
 let g:syntastic_puppet_puppetlint_sort = 1
+"let g:syntastic_python_pylint_exec = '/Users/jedge/scripts/python/virtualenvs/ansible-inventory/bin/pylint'
+"let g:syntastic_python_flake8_exec = '/Users/jedge/scripts/python/virtualenvs/ansible-inventory/bin/flake8'
 let g:syntastic_python_checkers = ['pylint', 'flake8']
 let g:syntastic_python_flake8_args = '--ignore=F403,F405'
-let g:syntastic_ruby_checkers = ['rubylint']
+let g:syntastic_ruby_checkers = ['rubocop']
 let g:syntastic_sh_checkers = ['shellcheck']
 let g:syntastic_sh_shellcheck_args = "--exclude=SC2086"
 

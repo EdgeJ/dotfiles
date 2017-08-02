@@ -14,26 +14,10 @@ augroup LargeFile
     autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
 
-"load Vundle settings"
-:source ~/.vim/vundle.vim
-
-"load syntastic"
-:source ~/.vim/syntastic.vim
-
-"load airline settings"
-:source ~/.vim/airline.vim
-
-"load NERDTree settings"
-:source ~/.vim/nerdtree.vim
-
-"netrw settings"
-"let g:netrw_liststyle=3
-"let g:netrw_banner=0
-"let g:netrw_list_hide='*/*.swp$'
-"let g:netrw_chgwin=1
-""start netrw
-":rightbelow 20vs
-":silent e .
+" load plugin settings
+for settings in split(glob('~/.vim/plugin-settings/*'), '\n')
+    exe 'source' settings
+endfor
 
 "key maps"
 "------------------------------------"

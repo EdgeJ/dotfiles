@@ -17,8 +17,10 @@ Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
 Plugin 'tpope/vim-fugitive'
 Plugin 'rodjek/vim-puppet'
+Plugin 'SirVer/ultisnips'
+Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
-Plugin 'yssl/QFEnter'
+Plugin 'Valloric/YouCompleteMe'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
