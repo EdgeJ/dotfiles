@@ -6,13 +6,13 @@ if has("python")
 elseif has("python3")
     let g:UltiSnipsUsePythonVersion = 3
 endif
-let g:UltiSnipsExpandTrigger="<cr>"
+let g:snips_author = "John Edge"
+let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
-let g:UltiSnipsEditSplit="vertical"
-
 
 " YouCompleteMe settings
 let g:ycm_key_list_select_completion = ['<C-n>', 'j']
 let g:ycm_key_list_previous_completion = ['<C-p>', 'k']
+let g:ycm_autoclose_preview_window_after_completion = 1
 let g:SuperTabDefaultCompletionType = '<C-n>'
