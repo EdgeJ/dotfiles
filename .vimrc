@@ -102,3 +102,6 @@ augroup end
 
 "backspace settings"
 set backspace=indent,eol,start
+
+"never create backups
+set noswapfile

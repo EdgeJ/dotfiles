@@ -6,3 +6,11 @@ if g:os == "Darwin"
 elseif g:os == "Linux"
     set guifont=Roboto\ Mono\ for\ Powerline\ 11
 endif
+set guioptions=ce
+"              ||
+"              |+-- use simple dialogs rather than pop-ups
+"              +  use GUI tabs, not console style tabs
+set guioptions=-T
+set guioptions=-M
+set guitablabel=%t
+set mousehide " hide the mouse cursor when typing

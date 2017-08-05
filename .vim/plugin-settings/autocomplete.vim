@@ -12,7 +12,7 @@ let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"
 
 " YouCompleteMe settings
-let g:ycm_key_list_select_completion = ['<C-n>', 'j']
-let g:ycm_key_list_previous_completion = ['<C-p>', 'k']
+let g:ycm_key_list_select_completion = ['<C-n>', '<A-j>']
+let g:ycm_key_list_previous_completion = ['<C-p>', '<A-k>']
 let g:ycm_autoclose_preview_window_after_completion = 1
 let g:SuperTabDefaultCompletionType = '<C-n>'

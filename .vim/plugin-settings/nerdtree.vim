@@ -13,5 +13,8 @@ let NERDTreeChDirMode=2
 "ignore compiled python
 let NERDTreeIgnore=['\~$', 'py[oc]$']
 
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeCascadeSingleChildDir = 0
+
 "close vim if NERDTree is the only window left
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
