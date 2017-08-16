@@ -20,6 +20,9 @@ let g:syntastic_puppet_puppetlint_sort = 1
 let g:syntastic_python_checkers = ['pylint', 'flake8']
 let g:syntastic_python_flake8_args = '--ignore=F403,F405'
 let g:syntastic_ruby_checkers = ['rubocop']
+if g:os == 'Linux'
+    let g:syntastic_ruby_rubocop_exec = '$HOME/.vim/wrappers/rubocop.sh'
+endif
 let g:syntastic_sh_checkers = ['shellcheck']
 let g:syntastic_sh_shellcheck_args = "--exclude=SC2086"
 
