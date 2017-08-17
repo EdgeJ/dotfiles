@@ -12,15 +12,17 @@ Plugin 'VundleVim/Vundle.vim'
 
 " plugins start here"
 
-Plugin 'vim-airline/vim-airline'
-Plugin 'scrooloose/syntastic'
-Plugin 'scrooloose/nerdtree'
-Plugin 'tpope/vim-fugitive'
-Plugin 'rodjek/vim-puppet'
-Plugin 'SirVer/ultisnips'
 Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
+Plugin 'rodjek/vim-puppet'
+Plugin 'scrooloose/syntastic'
+Plugin 'scrooloose/nerdtree'
+Plugin 'SirVer/ultisnips'
+Plugin 'tpope/vim-fugitive'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-ruby/vim-ruby'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'weynhamz/vim-plugin-minibufexpl'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
