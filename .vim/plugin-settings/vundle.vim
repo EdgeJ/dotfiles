@@ -14,6 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'ervandew/supertab'
 Plugin 'honza/vim-snippets'
+Plugin 'moll/vim-bbye'
 Plugin 'rodjek/vim-puppet'
 Plugin 'scrooloose/syntastic'
 Plugin 'scrooloose/nerdtree'
@@ -23,6 +24,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-ruby/vim-ruby'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'weynhamz/vim-plugin-minibufexpl'
+Plugin 'xolox/vim-easytags'
+Plugin 'xolox/vim-misc'
+Plugin 'Xuyuanp/nerdtree-git-plugin'
 Plugin 'yssl/QFEnter'
 
 " All of your Plugins must be added before the following line

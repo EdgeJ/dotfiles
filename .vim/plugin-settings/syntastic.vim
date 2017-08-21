@@ -6,7 +6,7 @@ set statusline+=%*
 let g:syntastic_always_populate_loc_list = 0
 let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 1
+let g:syntastic_check_on_wq = 0
 let g:syntastic_aggregate_errors = 1
 
 "linter settings"
@@ -25,5 +25,6 @@ if g:os == 'Linux'
 endif
 let g:syntastic_sh_checkers = ['shellcheck']
 let g:syntastic_sh_shellcheck_args = "--exclude=SC2086"
+let g:syntastic_yaml_checkers = ['yamllint']
 
 highlight SyntasticError guibg=#2f0000
