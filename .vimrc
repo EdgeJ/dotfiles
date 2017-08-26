@@ -1,31 +1,58 @@
-"what os are we
-let g:os = substitute(system('uname'), '\n', '', '')
-
 "disable settings for large files"
+"------------------------------------"
 function LargeFile()
     set eventignore+=FileType
     setlocal bufhidden=unload
     setlocal undolevels=-1
-    autocmd VimEnter * echo "This file is larger than " . (g:LargeFile / 1024 / 1024) . "MB, so some options have been disabled."
+    autocmd VimEnter * echo "This file is larger than "
+        \ . (g:LargeFile / 1024 / 1024) . "MB, so some options have been"
+        \ "disabled."
 endfunction
 
 let g:LargeFile = 1024 * 1024 * 20
 augroup LargeFile
-    autocmd BufReadPre * let f=getfsize(expand("<afile>")) | if f > g:LargeFile || f == -2 | call LargeFile() | endif
+    autocmd BufReadPre * let f=getfsize(expand("<afile>")) |
+        \ if f > g:LargeFile || f == -2 | call LargeFile() | endif
 augroup END
 
-" load plugin settings
+"general settings
+"------------------------------------"
+"what os are we"
+let g:os = substitute(system('uname'), '\n', '', '')
+
+"enable mouse settings"
+set ttyfast
+set mouse=a
+set ttymouse=xterm
+
+"enable copying to os clipboard"
+if g:os == "Darwin"
+    set clipboard=unnamed
+else
+    set clipboard=unnamedplus
+endif
+
+"search settings"
+set hlsearch
+set ignorecase
+
+"open vimgrep always in quickfix"
+augroup grepwindow
+    autocmd!
+    autocmd QuickFixCmdPost [^l]* botright cwindow
+    autocmd QuickFixCmdPost l*    botright lwindow
+augroup END
+
+"never create backups"
+set noswapfile
+
+"load plugin settings"
 for settings in split(glob('~/.vim/plugin-settings/*'), '\n')
     exe 'source' settings
 endfor
 
 "key maps"
 "------------------------------------"
-"remap shift+enter to bring up netrw as sidebar"
-"nnoremap <silent> <C-M> :rightbelow 20vs<CR>:e .<CR>
-"remap CTLR+enter to open files in a new tab"
-"nmap <silent> <NL> t :rightbelow 20vs<CR>:e .<CR>:wincmd h<CR>
-"map <F4> to search for current word recursively in pwd"
 map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> :botright cw<CR>
 map <F9> :set invnumber<CR>
 map <F10> :vertical resize 80<CR>
@@ -45,9 +72,6 @@ imap <esc>Ox 8
 imap <esc>Oy 9
 imap <esc>Op 0
 imap <esc>On .
-"map buffer navigation keys
-nnoremap <C-n> :bnext<CR>
-nnoremap <C-p> :bprevious<CR>
 
 "------------------------------------"
 "set syntax highlighting and display settings"
@@ -56,46 +80,21 @@ filetype on
 set background=dark
 set number
 
-"powerline font settings if running in gvim
+"powerline font settings if running in gvim"
 if has("gui")
     let g:airline_powerline_fonts = 1
 endif
 
+"editing settings and filetypes"
+"------------------------------------"
 "set tabs to 4 spaces"
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab textwidth=79
-"with a few exceptions
+"with a few exceptions"
 au FileType html,htmldjango,javascript,ruby,yaml
     \ set tabstop=2 shiftwidth=2 softtabstop=2
 au FileType puppet set textwidth=140
 
-"command aliases
-command E Explore
-command Q qa
-command Resize vertical resize 80
-
-"enable mouse settings"
-set ttyfast
-set mouse=a
-set ttymouse=xterm
-
-"enable copying to os clipboard"
-if g:os == "Darwin"
-    set clipboard=unnamed
-else
-    set clipboard=unnamedplus
-endif
-
-"search settings"
-set hlsearch
-set ignorecase
-"open vimgrep always in quickfix"
-augroup grepwindow
-    autocmd!
-    autocmd QuickFixCmdPost [^l]* botright cwindow
-    autocmd QuickFixCmdPost l*    botright lwindow
-augroup END
-
-"associate *.j2 files with htmldjango filetype
+"associate *.j2 files with htmldjango filetype"
 augroup jinjatemplates
     au BufRead,BufNewFile *.j2 setfiletype htmldjango
 augroup end
@@ -103,5 +102,9 @@ augroup end
 "backspace settings"
 set backspace=indent,eol,start
 
-"never create backups
-set noswapfile
+"command aliases"
+"------------------------------------"
+command E Explore
+command Q qa
+command Resize vertical resize 80
+command BD Bdelete
