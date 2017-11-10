@@ -11,12 +11,12 @@ let g:syntastic_aggregate_errors = 1
 
 "linter settings"
 let g:syntastic_eruby_checkers = ['ruby']
+let g:syntastic_eruby_ruby_quiet_messages =
+    \ {'regex': 'possibly useless use of a variable in void context'}
 let g:syntastic_puppet_checkers = ['puppetlint']
 let g:syntastic_puppet_puppetlint_args = 
     \ "--no-80chars-check --no-140chars-check --no-arrow_alignment-check"
 let g:syntastic_puppet_puppetlint_sort = 1
-"let g:syntastic_python_pylint_exec = '/Users/jedge/scripts/python/virtualenvs/ansible-inventory/bin/pylint'
-"let g:syntastic_python_flake8_exec = '/Users/jedge/scripts/python/virtualenvs/ansible-inventory/bin/flake8'
 let g:syntastic_python_checkers = ['pylint', 'flake8']
 let g:syntastic_python_flake8_args = '--ignore=F403,F405'
 let g:syntastic_ruby_checkers = ['rubocop']

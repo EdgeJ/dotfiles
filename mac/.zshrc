@@ -5,6 +5,7 @@
 export ZSH=/Users/jedge/.oh-my-zsh
 export EDITOR=/usr/bin/vim
 export HOMEBREW_GITHUB_API_TOKEN=""
+export SUDO_EDITOR="${EDITOR} -u NORC"
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
@@ -115,3 +116,5 @@ is(){
 for config in ~/.zshrc.d/*(.); do
     source $config
 done
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
