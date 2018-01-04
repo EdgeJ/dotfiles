@@ -1,5 +1,5 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+# Add /usr/local/sbin to the path for brew installed utils
+export PATH="/usr/local/sbin:${PATH}"
 
 # Path to your oh-my-zsh installation.
 export ZSH=/Users/jedge/.oh-my-zsh
@@ -58,7 +58,12 @@ autoload -U zmv
 plugins=(git brew jira osx vagrant z)
 
 source $ZSH/oh-my-zsh.sh
-#
+
+# unset a few oh-my-zsh history opts
+
+unsetopt inc_append_history
+unsetopt share_history
+
 ## Set personal aliases, overriding those provided by oh-my-zsh libs,
 ## plugins, and themes. Aliases can be placed here, though oh-my-zsh
 ## users are encouraged to define aliases within the ZSH_CUSTOM folder.

@@ -90,8 +90,10 @@ endif
 "set tabs to 4 spaces"
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab textwidth=79
 "with a few exceptions"
-au FileType html,htmldjango,javascript,ruby,yaml
+au FileType html,htmldjango,javascript,sh,ruby,yaml
     \ set tabstop=2 shiftwidth=2 softtabstop=2
+au FileType perl
+    \ set tabstop=8 shiftwidth=8 softtabstop=8
 au FileType puppet set textwidth=140
 
 "associate *.j2 files with htmldjango filetype"
