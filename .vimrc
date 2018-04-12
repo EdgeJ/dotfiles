@@ -51,6 +51,10 @@ for settings in split(glob('~/.vim/plugin-settings/*'), '\n')
     exe 'source' settings
 endfor
 
+"always open livedown preview for markdown files
+let g:livedown_autorun = 1
+let g:livedown_port = 8337
+
 "key maps"
 "------------------------------------"
 map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> :botright cw<CR>
