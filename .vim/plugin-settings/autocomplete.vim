@@ -7,6 +7,7 @@ elseif has("python3")
     let g:UltiSnipsUsePythonVersion = 3
 endif
 let g:snips_author = "John Edge"
+let g:snips_email = "jedge@sitespect.com"
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<c-j>"
 let g:UltiSnipsJumpBackwardTrigger="<c-k>"

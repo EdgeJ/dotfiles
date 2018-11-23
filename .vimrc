@@ -57,6 +57,10 @@ let g:livedown_port = 8337
 
 "key maps"
 "------------------------------------"
+"
+"really delete things without putting them in the buffer
+nnoremap <leader>d "_d
+xnoremap <leader>d "_d
 map <F4> :execute "vimgrep /" . expand("<cword>") . "/j **" <Bar> :botright cw<CR>
 map <F9> :set invnumber<CR>
 map <F10> :vertical resize 80<CR>
@@ -94,7 +98,7 @@ endif
 "set tabs to 4 spaces"
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab textwidth=79
 "with a few exceptions"
-au FileType html,htmldjango,javascript,sh,ruby,yaml
+au FileType html,htmldjango,javascript,ruby,yaml
     \ set tabstop=2 shiftwidth=2 softtabstop=2
 au FileType perl
     \ set tabstop=8 shiftwidth=8 softtabstop=8

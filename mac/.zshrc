@@ -79,11 +79,7 @@ alias list="ls -lF"
 alias h="history | tail -n 10"
 alias jump="ssh jump"
 alias mybranches="git branch -r | grep ${USER}"
-
-# use homebrew vim if it's installed
-if [[ -f "/usr/local/bin/vim" ]]; then
-    alias vim="/usr/local/bin/vim"
-fi
+alias cleardrac="find ~/Downloads -name viewer.jnlp\* -delete"
 
 mdch(){
     mkdir "$*"
@@ -93,6 +89,7 @@ mdch(){
 is(){
     ps aux | grep -i "$@" | grep -v grep
 }
+
 
 ## Keypad
 # # 0 . Enter
