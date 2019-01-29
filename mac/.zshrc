@@ -55,7 +55,7 @@ autoload -U zmv
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws brew catimg git-extras jsontools osx z)
+plugins=(aws brew catimg git-extras jsontools rake osx z)
 
 source $ZSH/oh-my-zsh.sh
 
