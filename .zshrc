@@ -5,7 +5,7 @@ case $(uname -s) in
         DISTPLUGINS=(brew osx)
         ;;
     Linux)
-        if [[ $(uname -r) =~ *Microsoft ]]; then
+        if [[ $(uname -r) =~ .*Microsoft ]]; then
             DIST=wsl
             DISTPLUGINS=()
         else
