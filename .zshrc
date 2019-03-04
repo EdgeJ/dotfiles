@@ -1,14 +1,20 @@
 # figure out what dist type we're on
-case $(uname -r) in
-    *Darwin)
+case $(uname -s) in
+    Darwin)
         DIST=mac
         DISTPLUGINS=(brew osx)
         ;;
-    *Microsoft)
-        DIST=wsl
-        DISTPLUGINS=()
+    Linux)
+        if [[ $(uname -r) =~ *Microsoft ]]; then
+            DIST=wsl
+            DISTPLUGINS=()
+        else
+            DIST=linux
+            DISTPLUGINS=()
+        fi
         ;;
     *)
+        echo "Could not determine your OS, defaulting to Linux"
         DIST=linux
         DISTPLUGINS=()
         ;;
