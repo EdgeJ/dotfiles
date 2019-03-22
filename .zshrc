@@ -37,6 +37,19 @@ ZSH_THEME="spaceship"
 SPACESHIP_EXEC_TIME_SHOW=false
 SPACESHIP_DIR_TRUNC=0
 SPACESHIP_DIR_TRUNC_REPO=false
+SPACESHIP_PROMPT_ORDER=(
+  user          # Username section
+  dir           # Current directory section
+  git           # Git section (git_branch + git_status)
+  ruby          # Ruby section
+  golang        # Go section
+  docker        # Docker section
+  venv          # virtualenv section
+  terraform     # Terraform workspace section
+  line_sep      # Line break
+  battery       # Battery level and status
+  char          # Prompt character
+)
 
 # enable plugins
 

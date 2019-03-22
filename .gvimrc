@@ -14,3 +14,7 @@ set guioptions=-T
 set guioptions=-M
 set guitablabel=%t
 set mousehide " hide the mouse cursor when typing
+
+"automatically start NERDTree in gvim
+autocmd vimenter * NERDTree
+autocmd vimenter * wincmd w

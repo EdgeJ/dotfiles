@@ -1,10 +1,6 @@
 "position NERDTree on the right
 let g:NERDTreeWinPos = "right"
 
-"automatically start NERDTree
-autocmd vimenter * NERDTree
-autocmd vimenter * wincmd w
-
 "map <F8> to toggle NERDTree
 map <F8> :NERDTreeToggle<CR>
 
