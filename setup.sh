@@ -5,26 +5,25 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
-# install homebrew
-/usr/bin/xcode-select --install && sudo /usr/bin/xcodebuild -license
-
-if git -C /usr/local/Homebrew rev-parse &>/dev/null ||
-    [[ -d /usr/local/Homebrew/.git ]]; then
-    echo "Clearing existing Homebrew installation"
-    rm -rf /usr/local/Homebrew/*
-fi
-
-mkdir -p /usr/local/Homebrew
-curl --location --silent --fail \
-    https://github.com/Homebrew/brew/tarball/master |
-    tar xz --strip 1 -C /usr/local/Homebrew
-ln -sfn /usr/local/Homebrew/bin/brew /usr/local/bin/brew
-
 # brew install
 /usr/local/bin/brew update --force
-#/usr/local/bin/brew bundle
+/usr/local/bin/brew bundle || true
+
+# install oh-my-zsh
+if ! [[ -d ~/.oh-my-zsh ]]; then
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+fi
+
+# install vundle
+if ! git rev-parse ~/.vim/bundle/Vundle.vim &>/dev/null; then
+    mkdir -p ~/.vim/bundle
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+fi
 
 # symlink directories
-for dotfile in .config .vim .gitconfig .gitignore_global .gvimrc .vimrc .zshrc; do
+for dotfile in .config .gitconfig .gitignore_global .gvimrc .vimrc .zshrc; do
     ln -sfn $(pwd)/${dotfile} ~/${dotfile}
 done
+
+ln -sfn $(pwd)/.vim/plugin-settings ~/.vim/plugin-settings
+ln -sfn $(pwd)/.vim/wrappers ~/.vim/wrappers
