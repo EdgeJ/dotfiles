@@ -20,10 +20,16 @@ if ! git rev-parse ~/.vim/bundle/Vundle.vim &>/dev/null; then
     git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 fi
 
-# symlink directories
-for dotfile in .config .gitconfig .gitignore_global .gvimrc .vimrc .zshrc; do
-    ln -sfn $(pwd)/${dotfile} ~/${dotfile}
+# symlink files
+for dotfile in .gitconfig .gitignore_global .gvimrc .vimrc .zshrc; do
+    ln -sfn "$(pwd)/${dotfile}" ~/${dotfile}
 done
 
-ln -sfn $(pwd)/.vim/plugin-settings ~/.vim/plugin-settings
-ln -sfn $(pwd)/.vim/wrappers ~/.vim/wrappers
+# install livedown for md preview
+npm install -g livedown
+
+mkdir -p ~/{.config,.vim,.zshrc.d}
+
+ln -sfn "$(pwd)/.config/pep8" ~/.config/pep8
+ln -sfn "$(pwd)/.vim/plugin-settings" ~/.vim/plugin-settings
+ln -sfn "$(pwd)/.vim/wrappers" ~/.vim/wrappers
