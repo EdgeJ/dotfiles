@@ -117,3 +117,6 @@ if [[ $(find ~/.zshrc.d -type f | wc -l) > 0 ]]; then
         source $config
     done
 fi
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"

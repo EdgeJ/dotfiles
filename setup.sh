@@ -33,3 +33,9 @@ mkdir -p ~/{.config,.vim,.zshrc.d}
 ln -sfn "$(pwd)/.config/pep8" ~/.config/pep8
 ln -sfn "$(pwd)/.vim/plugin-settings" ~/.vim/plugin-settings
 ln -sfn "$(pwd)/.vim/wrappers" ~/.vim/wrappers
+
+# install rvm
+gpg --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
+curl -sSL https://get.rvm.io | bash -s stable
+
+echo "Setup is complete. The system should be rebooted to complete the process."
