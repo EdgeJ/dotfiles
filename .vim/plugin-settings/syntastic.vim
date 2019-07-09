@@ -16,8 +16,6 @@ let g:syntastic_ansible_checkers = ['ansible_lint']
 let g:syntastic_eruby_checkers = ['ruby']
 let g:syntastic_eruby_ruby_quiet_messages =
     \ {'regex': 'possibly useless use of a variable in void context'}
-let g:syntastic_perl_checkers = ['perlcritic']
-let g:syntastic_perl_perlcritic_exec = '$HOME/perl5/perlbrew/perls/perl-5.18.0/bin/perlcritic'
 let g:syntastic_puppet_checkers = ['puppetlint']
 let g:syntastic_puppet_puppetlint_args = 
     \ "--no-80chars-check --no-140chars-check --no-arrow_alignment-check"
