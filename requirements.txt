@@ -1,0 +1,4 @@
+pudb==2019.1
+virtualenv==16.6.2
+virtualenv-clone==0.5.3
+virtualenvwrapper==4.8.4
