@@ -99,7 +99,7 @@ if command -v jenv &>/dev/null; then
     eval "$(jenv init -)"
 
     # add to the PATH for jenv and homebrewed binaries
-    export PATH="${HOME}/.jenv/bin/${PATH}"
+    export PATH="${HOME}/.jenv/bin/:${PATH}"
 fi
 
 if [[ "${DIST}" == "mac" ]]; then
@@ -112,7 +112,7 @@ export EDITOR=/usr/bin/vim
 export SUDO_EDITOR="${EDITOR} -u NORC"
 
 # Source locally managed zsh configs
-if [[ $(find ~/.zshrc.d -type f | wc -l) > 0 ]]; then
+if [[ $(find ~/.zshrc.d -type f | wc -l) -gt 0 ]]; then
     for config in ~/.zshrc.d/*; do
         source $config
     done
