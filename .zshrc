@@ -94,6 +94,20 @@ is(){
     ps aux | grep -i "$@" | grep -v grep
 }
 
+# set up virtualenvwrapper
+if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
+    export WORKON_HOME=$HOME/.virtualenvs
+    export PROJECT_HOME=$HOME/PythonDev
+    mkdir -p $WORKON_HOME
+    mkdir -p $PROJECT_HOME
+    source /usr/local/bin/virtualenvwrapper.sh
+fi
+
+# kubernetes autocomplete
+if [[ $commands[kubectl] ]]; then
+    source <(kubectl completion zsh)
+fi
+
 if command -v jenv &>/dev/null; then
     # jenv Java management
     eval "$(jenv init -)"
