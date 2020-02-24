@@ -13,6 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 " plugins start here"
 
 Plugin 'ervandew/supertab'
+Plugin 'GEverding/vim-hocon'
 Plugin 'godlygeek/tabular'
 Plugin 'hashivim/vim-terraform'
 Plugin 'honza/vim-snippets'

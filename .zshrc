@@ -83,6 +83,7 @@ alias list="ls -lF"
 alias h="history | tail -n 10"
 alias jump="ssh jump"
 alias mybranches="git branch -r | grep ${USER}"
+alias forcepush="git push --force-with-lease"
 alias cleardrac="find ~/Downloads -name viewer.jnlp\* -delete"
 
 mdch(){
@@ -103,6 +104,14 @@ if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
     source /usr/local/bin/virtualenvwrapper.sh
 fi
 
+# docker autocomplete
+if [[ -d /Applications/Docker.app ]] && [[ ! -f /usr/local/share/zsh/site-functions/_docker ]]; then
+    etc=/Applications/Docker.app/Contents/Resources/etc
+    ln -sfn $etc/docker.zsh-completion /usr/local/share/zsh/site-functions/_docker
+    ln -sfn $etc/docker-machine.zsh-completion /usr/local/share/zsh/site-functions/_docker-machine
+    ln -sfn $etc/docker-compose.zsh-completion /usr/local/share/zsh/site-functions/_docker-compose
+fi
+
 # kubernetes autocomplete
 if [[ $commands[kubectl] ]]; then
     source <(kubectl completion zsh)
@@ -116,6 +125,12 @@ if command -v jenv &>/dev/null; then
     export PATH="${HOME}/.jenv/bin/:${PATH}"
 fi
 
+# cache terraform providers
+if command -v terraform &>/dev/null; then
+    export TF_PLUGIN_CACHE_DIR=$HOME/.terraform/plugins
+    mkdir -p $TF_PLUGIN_CACHE_DIR
+fi
+
 if [[ "${DIST}" == "mac" ]]; then
     # add to PATH for homebrewed binaries
     export PATH="/usr/local/sbin:${PATH}"
@@ -124,6 +139,12 @@ fi
 # default editor settings
 export EDITOR=/usr/bin/vim
 export SUDO_EDITOR="${EDITOR} -u NORC"
+
+# AWS credentials
+if [[ -f ~/.aws/credentials ]]; then
+    export AWS_ACCESS_KEY_ID=$(sed -n -E 's/aws_access_key_id = (.*)/\1/p' ~/.aws/credentials)
+    export AWS_SECRET_ACCESS_KEY=$(sed -n -E 's/aws_secret_access_key = (.*)/\1/p' ~/.aws/credentials)
+fi
 
 # Source locally managed zsh configs
 if [[ $(find ~/.zshrc.d -type f | wc -l) -gt 0 ]]; then

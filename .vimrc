@@ -118,3 +118,9 @@ command E Explore
 command Q qa
 command Resize vertical resize 80
 command BD Bdelete
+
+"load any local settings"
+"------------------------------------"
+if filereadable(glob("~/.vimrc.local"))
+    source ~/.vimrc.local
+endif

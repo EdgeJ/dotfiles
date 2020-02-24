@@ -15,5 +15,6 @@
 	fscache = true
 	editor = /usr/bin/vim --clean
 	excludesfile = ~/.gitignore_global
+    pager = less -FX
 [log]
 	decorate = short
