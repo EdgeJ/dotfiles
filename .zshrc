@@ -136,6 +136,10 @@ if [[ "${DIST}" == "mac" ]]; then
     export PATH="/usr/local/sbin:${PATH}"
 fi
 
+if [[ -d ${HOME}/go/bin ]]; then
+    export PATH="${PATH}:${HOME}/go/bin"
+fi
+
 # default editor settings
 export EDITOR=/usr/bin/vim
 export SUDO_EDITOR="${EDITOR} -u NORC"
