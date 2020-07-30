@@ -85,6 +85,7 @@ alias jump="ssh jump"
 alias mybranches="git branch -r | grep ${USER}"
 alias forcepush="git push --force-with-lease"
 alias cleardrac="find ~/Downloads -name viewer.jnlp\* -delete"
+alias curl="noglob curl"
 
 mdch(){
     mkdir "$*"
@@ -143,6 +144,7 @@ fi
 # default editor settings
 export EDITOR=/usr/bin/vim
 export SUDO_EDITOR="${EDITOR} -u NORC"
+export KUBE_EDITOR="${EDITOR} -u NORC"
 
 # AWS credentials
 if [[ -f ~/.aws/credentials ]]; then
