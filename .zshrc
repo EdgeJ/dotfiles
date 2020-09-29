@@ -53,7 +53,17 @@ SPACESHIP_PROMPT_ORDER=(
 
 # enable plugins
 
-plugins=(aws catimg git-extras jsontools rake z $DISTPLUGINS[@])
+plugins=(
+    aws
+    docker
+    git-extras
+    helm
+    jsontools
+    kubectl
+    rake
+    z
+    $DISTPLUGINS[@]
+)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -161,3 +171,5 @@ fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+[[ -s "/Users/jedge/.gvm/scripts/gvm" ]] && source "/Users/jedge/.gvm/scripts/gvm"
