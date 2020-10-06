@@ -62,6 +62,7 @@ plugins=(
     kubectl
     rake
     z
+    zsh-autosuggestions
     $DISTPLUGINS[@]
 )
 
@@ -76,6 +77,11 @@ if ! git -C "${ZSH_CUSTOM}/themes/spaceship-prompt" rev-parse &>/dev/null; then
     ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" \
         "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
     source $ZSH/oh-my-zsh.sh
+fi
+
+# install autosuggestions plugin
+if ! git -C "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" rev-parse &>/dev/null; then
+    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 fi
 
 # unset a few oh-my-zsh history opts
@@ -166,6 +172,14 @@ fi
 if [[ $(find ~/.zshrc.d -type f | wc -l) -gt 0 ]]; then
     for config in ~/.zshrc.d/*; do
         source $config
+    done
+fi
+
+# Source bash autocompletion scripts
+if [[ -d /usr/local/etc/bash_completion.d ]]; then
+    autoload -U +X bashcompinit && bashcompinit
+    for completion in /usr/local/etc/bash_completion.d/*; do
+        source $completion &>/dev/null
     done
 fi
 
