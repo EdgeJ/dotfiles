@@ -51,6 +51,9 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
+# autocomplete settings
+ZSH_AUTOCOMPLETE_STRATEGY=(completion history)
+
 # enable plugins
 
 plugins=(
@@ -166,13 +169,6 @@ export KUBE_EDITOR="${EDITOR} -u NORC"
 if [[ -f ~/.aws/credentials ]]; then
     export AWS_ACCESS_KEY_ID=$(sed -n -E 's/aws_access_key_id = (.*)/\1/p' ~/.aws/credentials)
     export AWS_SECRET_ACCESS_KEY=$(sed -n -E 's/aws_secret_access_key = (.*)/\1/p' ~/.aws/credentials)
-fi
-
-# Source locally managed zsh configs
-if [[ $(find ~/.zshrc.d -type f | wc -l) -gt 0 ]]; then
-    for config in ~/.zshrc.d/*; do
-        source $config
-    done
 fi
 
 # Source bash autocompletion scripts
