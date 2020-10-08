@@ -51,8 +51,10 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
-# autocomplete settings
-ZSH_AUTOCOMPLETE_STRATEGY=(completion history)
+# autosuggest settings
+ZSH_AUTOSUGGEST_STRATEGY=(completion history)
+ZSH_AUTOSUGGEST_USE_ASYNC=true
+ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
 
 # enable plugins
 
