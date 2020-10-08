@@ -167,6 +167,9 @@ export EDITOR=/usr/bin/vim
 export SUDO_EDITOR="${EDITOR} -u NORC"
 export KUBE_EDITOR="${EDITOR} -u NORC"
 
+# don't paginate if text fits one screen
+export PAGER='less -FX'
+
 # AWS credentials
 if [[ -f ~/.aws/credentials ]]; then
     export AWS_ACCESS_KEY_ID=$(sed -n -E 's/aws_access_key_id = (.*)/\1/p' ~/.aws/credentials)
