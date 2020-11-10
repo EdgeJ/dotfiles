@@ -107,6 +107,7 @@ alias mybranches="git branch -r | grep ${USER}"
 alias forcepush="git push --force-with-lease"
 alias cleardrac="find ~/Downloads -name viewer.jnlp\* -delete"
 alias curl="noglob curl"
+alias readme="livedown start README.md --open --browser \"'google chrome'\" &|"
 
 mdch(){
     mkdir "$*"
