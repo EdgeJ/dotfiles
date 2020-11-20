@@ -31,6 +31,7 @@ npm install -g livedown
 mkdir -p ~/{.config,.vim,.zshrc.d}
 
 ln -sfn "$(pwd)/.config/pep8" ~/.config/pep8
+ln -sfn "$(pwd)/.config/yamllint" ~/.config/yamllint
 ln -sfn "$(pwd)/.vim/plugin-settings" ~/.vim/plugin-settings
 ln -sfn "$(pwd)/.vim/wrappers" ~/.vim/wrappers
 

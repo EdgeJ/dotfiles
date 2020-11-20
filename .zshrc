@@ -171,11 +171,11 @@ export KUBE_EDITOR="${EDITOR} -u NORC"
 # don't paginate if text fits one screen
 export PAGER='less -FX'
 
-# AWS credentials
-if [[ -f ~/.aws/credentials ]]; then
-    export AWS_ACCESS_KEY_ID=$(sed -n -E 's/aws_access_key_id = (.*)/\1/p' ~/.aws/credentials)
-    export AWS_SECRET_ACCESS_KEY=$(sed -n -E 's/aws_secret_access_key = (.*)/\1/p' ~/.aws/credentials)
-fi
+## AWS credentials
+#if [[ -f ~/.aws/credentials ]]; then
+#    export AWS_ACCESS_KEY_ID=$(sed -n -E 's/aws_access_key_id = (.*)/\1/p' ~/.aws/credentials)
+#    export AWS_SECRET_ACCESS_KEY=$(sed -n -E 's/aws_secret_access_key = (.*)/\1/p' ~/.aws/credentials)
+#fi
 
 # Source bash autocompletion scripts
 if [[ -d /usr/local/etc/bash_completion.d ]]; then
