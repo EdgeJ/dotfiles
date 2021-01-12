@@ -14,6 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'ervandew/supertab'
 Plugin 'dense-analysis/ale'
+Plugin 'fatih/vim-go'
 Plugin 'GEverding/vim-hocon'
 Plugin 'godlygeek/tabular'
 Plugin 'hashivim/vim-terraform'
