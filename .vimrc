@@ -43,8 +43,8 @@ augroup grepwindow
     autocmd QuickFixCmdPost l*    botright lwindow
 augroup END
 
-"never create backups"
-set noswapfile
+"store backups in a single location"
+set directory^=$HOME/.vim/swapfiles//
 
 "load plugin settings"
 for settings in split(glob('~/.vim/plugin-settings/*'), '\n')
