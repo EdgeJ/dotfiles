@@ -28,7 +28,7 @@ done
 # install livedown for md preview
 npm install -g livedown
 
-mkdir -p ~/{.config,.vim,.zshrc.d}
+mkdir -p ~/{.config,.vim,.vim/swapfiles,.zshrc.d}
 
 ln -sfn "$(pwd)/.config/pep8" ~/.config/pep8
 ln -sfn "$(pwd)/.config/yamllint" ~/.config/yamllint

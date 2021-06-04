@@ -44,7 +44,7 @@ augroup grepwindow
 augroup END
 
 "store backups in a single location"
-set directory^=$HOME/.vim/swapfiles//
+set directory=$HOME/.vim/swapfiles/
 
 "load plugin settings"
 for settings in split(glob('~/.vim/plugin-settings/*'), '\n')
