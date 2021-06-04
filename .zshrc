@@ -44,10 +44,10 @@ SPACESHIP_PROMPT_ORDER=(
   ruby          # Ruby section
   golang        # Go section
   docker        # Docker section
+  kubectl_context
   venv          # virtualenv section
   terraform     # Terraform workspace section
   line_sep      # Line break
-  battery       # Battery level and status
   char          # Prompt character
 )
 
