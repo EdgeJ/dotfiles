@@ -27,8 +27,6 @@ if [[ "${DIST}" == "wsl" ]]; then
     export LIBGL_ALWAYS_INDIRECT=1
 fi
 
-# Path to your oh-my-zsh installation.
-export ZSH=${HOME}/.oh-my-zsh
 
 # Set name of the theme to load.
 ZSH_THEME="spaceship"
@@ -54,7 +52,7 @@ SPACESHIP_PROMPT_ORDER=(
   char          # Prompt character
 )
 
-# autosuggest settings
+## autosuggest settings
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
 ZSH_AUTOSUGGEST_USE_ASYNC=true
 ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
@@ -74,23 +72,24 @@ plugins=(
     $DISTPLUGINS[@]
 )
 
-source $ZSH/oh-my-zsh.sh
-
-# install spaceship-prompt theme
-# unfortunately must be done after oh-my-zsh has been loaded
-# to set $ZSH_CUSTOM
-if ! git -C "${ZSH_CUSTOM}/themes/spaceship-prompt" rev-parse &>/dev/null; then
-    git clone https://github.com/denysdovhan/spaceship-prompt.git \
-        "$ZSH_CUSTOM/themes/spaceship-prompt"
-    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" \
-        "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
-    source $ZSH/oh-my-zsh.sh
-fi
+# paths for oh-my-zsh installation
+export ZSH=${HOME}/.oh-my-zsh
+export ZSH_CUSTOM=${ZSH}/custom
 
 # install autosuggestions plugin
 if ! git -C "${ZSH_CUSTOM}/plugins/zsh-autosuggestions" rev-parse &>/dev/null; then
     git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM}/plugins/zsh-autosuggestions
 fi
+
+# install spaceship-prompt theme
+if ! git -C "${ZSH_CUSTOM}/themes/spaceship-prompt" rev-parse &>/dev/null; then
+    git clone https://github.com/denysdovhan/spaceship-prompt.git \
+        "$ZSH_CUSTOM/themes/spaceship-prompt"
+    ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" \
+        "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+fi
+
+source $ZSH/oh-my-zsh.sh
 
 # unset a few oh-my-zsh history opts
 
@@ -112,35 +111,9 @@ alias cleardrac="find ~/Downloads -name viewer.jnlp\* -delete"
 alias curl="noglob curl"
 alias readme="livedown start README.md --open --browser \"'google chrome'\" &|"
 
-mdch(){
-    mkdir "$*"
-    cd "$*"
-}
-
-is(){
-    ps aux | grep -i "$@" | grep -v grep
-}
-
-# set up virtualenvwrapper
-if [[ -f /usr/local/bin/virtualenvwrapper.sh ]]; then
-    export WORKON_HOME=$HOME/.virtualenvs
-    export PROJECT_HOME=$HOME/PythonDev
-    mkdir -p $WORKON_HOME
-    mkdir -p $PROJECT_HOME
-    source /usr/local/bin/virtualenvwrapper.sh
-fi
-
 # docker autocomplete
-if [[ -d /Applications/Docker.app ]] && [[ ! -f /usr/local/share/zsh/site-functions/_docker ]]; then
-    etc=/Applications/Docker.app/Contents/Resources/etc
-    ln -sfn $etc/docker.zsh-completion /usr/local/share/zsh/site-functions/_docker
-    ln -sfn $etc/docker-machine.zsh-completion /usr/local/share/zsh/site-functions/_docker-machine
-    ln -sfn $etc/docker-compose.zsh-completion /usr/local/share/zsh/site-functions/_docker-compose
-fi
-
-# kubernetes autocomplete
-if [[ $commands[kubectl] ]]; then
-    source <(kubectl completion zsh)
+if [[ -d /Applications/Docker.app ]] && [[ ! -f /usr/local/share/zsh/site-functions/docker* ]]; then
+    ln -sfn /Applications/Docker.app/Contents/Resources/etc/*.zsh-completion /usr/local/share/zsh/site-functions/
 fi
 
 if command -v jenv &>/dev/null; then
@@ -173,20 +146,6 @@ export KUBE_EDITOR="${EDITOR} -u NORC"
 
 # don't paginate if text fits one screen
 export PAGER='less -FX'
-
-## AWS credentials
-#if [[ -f ~/.aws/credentials ]]; then
-#    export AWS_ACCESS_KEY_ID=$(sed -n -E 's/aws_access_key_id = (.*)/\1/p' ~/.aws/credentials)
-#    export AWS_SECRET_ACCESS_KEY=$(sed -n -E 's/aws_secret_access_key = (.*)/\1/p' ~/.aws/credentials)
-#fi
-
-# Source bash autocompletion scripts
-if [[ -d /usr/local/etc/bash_completion.d ]]; then
-    autoload -U +X bashcompinit && bashcompinit
-    for completion in /usr/local/etc/bash_completion.d/*; do
-        source $completion &>/dev/null
-    done
-fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
