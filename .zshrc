@@ -37,6 +37,9 @@ ZSH_THEME="spaceship"
 SPACESHIP_EXEC_TIME_SHOW=false
 SPACESHIP_DIR_TRUNC=0
 SPACESHIP_DIR_TRUNC_REPO=false
+SPACESHIP_KUBECTL_SHOW=true
+SPACESHIP_KUBECTL_VERSION_SHOW=false
+SPACESHIP_KUBECONTEXT_COLOR=yellow
 SPACESHIP_PROMPT_ORDER=(
   user          # Username section
   dir           # Current directory section
@@ -44,7 +47,7 @@ SPACESHIP_PROMPT_ORDER=(
   ruby          # Ruby section
   golang        # Go section
   docker        # Docker section
-  kubectl_context
+  kubectl       # kubectl context
   venv          # virtualenv section
   terraform     # Terraform workspace section
   line_sep      # Line break
