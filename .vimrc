@@ -47,9 +47,11 @@ augroup END
 set directory=$HOME/.vim/swapfiles/
 
 "load plugin settings"
-for settings in split(glob('~/.vim/plugin-settings/*'), '\n')
-    exe 'source' settings
-endfor
+if has("gui")
+    for settings in split(glob('~/.vim/plugin-settings/*'), '\n')
+        exe 'source' settings
+    endfor
+endif
 
 "always open livedown preview for markdown files
 let g:livedown_autorun = 1
