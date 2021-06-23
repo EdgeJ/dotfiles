@@ -1,6 +1,9 @@
 [user]
 	name = EdgeJ
 	email = edge.jm@gmail.com
+	signingkey = 9AE138936923B20E
+[commit]
+	gpgsign = true
 [color]
 	ui = true
 [pull]
@@ -15,6 +18,6 @@
 	fscache = true
 	editor = /usr/bin/vim --clean
 	excludesfile = ~/.gitignore_global
-    pager = less -FX
+	pager = less -FX
 [log]
 	decorate = short
