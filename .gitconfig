@@ -1,7 +1,7 @@
 [user]
 	name = EdgeJ
-	email = edge.jm@gmail.com
-	signingkey = 9AE138936923B20E
+	email = 5093048+EdgeJ@users.noreply.github.com
+	signingkey = 19EAC2BF9BC999FC
 [commit]
 	gpgsign = true
 [color]
