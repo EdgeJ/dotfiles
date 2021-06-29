@@ -111,6 +111,23 @@ alias cleardrac="find ~/Downloads -name viewer.jnlp\* -delete"
 alias curl="noglob curl"
 alias readme="livedown start README.md --open --browser \"'google chrome'\" &|"
 
+cleanup-git-branches() {
+    local ruby_cmd=$(
+        cat <<'EOF'
+local_branches = `git branch`.split
+local_branches.delete('*')
+remote_branches = `git branch -r`.split
+remote_branches.each { |branch| branch.gsub!('origin/', '') }
+
+local_branches.each do |branch|
+  system('git', 'branch', '-D', branch) unless remote_branches.include? branch
+end
+EOF
+    )
+
+    ruby -e "${ruby_cmd}"
+}
+
 # docker autocomplete
 if [[ -d /Applications/Docker.app ]] && [[ ! -f /usr/local/share/zsh/site-functions/docker* ]]; then
     ln -sfn /Applications/Docker.app/Contents/Resources/etc/*.zsh-completion /usr/local/share/zsh/site-functions/
