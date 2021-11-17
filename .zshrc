@@ -2,7 +2,7 @@
 case $(uname -s) in
     Darwin)
         DIST=mac
-        DISTPLUGINS=(brew osx)
+        DISTPLUGINS=(brew macos)
         ;;
     Linux)
         if [[ $(uname -r) =~ .*Microsoft ]]; then
@@ -104,12 +104,11 @@ alias rm="rm -i"
 alias ll="ls -laF"
 alias list="ls -lF"
 alias h="history | tail -n 10"
-alias jump="ssh jump"
 alias mybranches="git branch -r | grep ${USER}"
 alias forcepush="git push --force-with-lease"
-alias cleardrac="find ~/Downloads -name viewer.jnlp\* -delete"
 alias curl="noglob curl"
 alias readme="livedown start README.md --open --browser \"'google chrome'\" &|"
+alias dockerconnect="nc -U ~/Library/Containers/com.docker.docker/Data/debug-shell.sock"
 
 cleanup-git-branches() {
     local ruby_cmd=$(
