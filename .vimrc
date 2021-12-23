@@ -63,12 +63,8 @@ let g:livedown_port = 8337
 "really delete things without putting them in the buffer
 nnoremap <leader>d "_d
 xnoremap <leader>d "_d
-map <F2> :bot terminal<CR>
+map <F2> :bot terminal ++rows=20<CR>
 map <F4> :execute "vimgrep! /" . expand("<cword>") . "/j **" <Bar> :botright cw<CR>
-map <F9> :set invnumber<CR>
-map <F10> :vertical resize 80<CR>
-map <F11> :vertical resize -5<CR>
-map <F12> :vertical resize +5<CR>
 "numpad mappings
 map <esc>Ol :resize +5<CR>
 map <esc>OS :resize -5<CR>
