@@ -11,8 +11,13 @@ if ! command -v brew &>/dev/null; then
 fi
 
 # brew install
-/usr/local/bin/brew update --force
-/usr/local/bin/brew bundle || true
+echo "Install/Update Homebrew packages? [y/N]"
+read -r brew_install
+
+if [[ "${brew_install}" == "y" ]] || [[ "${brew_install}" == "Y" ]]; then
+    /usr/local/bin/brew update --force
+    /usr/local/bin/brew bundle || true
+fi
 
 # install oh-my-zsh
 if ! [[ -d ~/.oh-my-zsh ]]; then
