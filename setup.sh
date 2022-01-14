@@ -24,10 +24,10 @@ if ! [[ -d ~/.oh-my-zsh ]]; then
     sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)" "" --unattended
 fi
 
-# install vundle
-if ! git rev-parse ~/.vim/bundle/Vundle.vim &>/dev/null; then
-    mkdir -p ~/.vim/bundle
-    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+# install vim-plug
+if ! [[ -f ~/.vim/autoload/plug.vim ]]; then
+    mkdir -p ~/.vim/autoload
+    curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
 
 # install livedown for md preview
