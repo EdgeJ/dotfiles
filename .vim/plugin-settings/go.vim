@@ -1,3 +1,4 @@
+let g:go_gopls_enabled = 0
 let g:go_debug_log_output = ''
 let g:go_debug_mappings = {
             \ '(go-debug-breakpoint)':  {'key': 'b'},

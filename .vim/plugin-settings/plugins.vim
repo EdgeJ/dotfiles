@@ -20,7 +20,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'SirVer/ultisnips'
 Plug 'sodapopcan/vim-twiggy'
 Plug 'tpope/vim-fugitive'
-Plug 'Valloric/YouCompleteMe', {'do': './install.py'}
+Plug 'ycm-core/YouCompleteMe', {'do': './install.py --all'}
 Plug 'vim-airline/vim-airline'
 Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/groovyindent-unix'
