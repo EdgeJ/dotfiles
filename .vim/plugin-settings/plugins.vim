@@ -11,7 +11,6 @@ Plug 'hashivim/vim-terraform'
 Plug 'honza/vim-snippets'
 Plug 'kristijanhusak/vim-create-pr'
 Plug 'moll/vim-bbye'
-Plug 'pearofducks/ansible-vim'
 Plug 'rodjek/vim-puppet'
 Plug 'ruanyl/vim-gh-line'
 Plug 'scrooloose/nerdtree'
@@ -22,12 +21,12 @@ Plug 'sodapopcan/vim-twiggy'
 Plug 'tpope/vim-fugitive'
 Plug 'ycm-core/YouCompleteMe', {'do': './install.py --all'}
 Plug 'vim-airline/vim-airline'
-Plug 'vim-ruby/vim-ruby'
 Plug 'vim-scripts/groovyindent-unix'
 Plug 'xolox/vim-easytags'
 Plug 'xolox/vim-misc'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'yssl/QFEnter'
+Plug 'Yggdroot/indentLine'
 
 " All of your Plugins must be added before the following line
 call plug#end()            " required
