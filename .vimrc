@@ -17,6 +17,8 @@ augroup END
 
 "general settings
 "------------------------------------"
+set nocompatible
+
 "what os are we"
 let g:os = substitute(system('uname'), '\n', '', '')
 
