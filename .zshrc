@@ -155,6 +155,10 @@ if [[ -d ${HOME}/go/bin ]]; then
     export PATH="${PATH}:${HOME}/go/bin"
 fi
 
+if [[ -d ${HOME}/.krew/bin ]]; then
+    export PATH="${PATH}:${HOME}/.krew/bin"
+fi
+
 # default editor settings
 export EDITOR=/usr/bin/vim
 export SUDO_EDITOR="${EDITOR} -u NORC"
