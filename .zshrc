@@ -42,7 +42,6 @@ SPACESHIP_PROMPT_ORDER=(
   user          # Username section
   dir           # Current directory section
   git           # Git section (git_branch + git_status)
-  ruby          # Ruby section
   golang        # Go section
   docker        # Docker section
   kubectl       # kubectl context
@@ -166,8 +165,3 @@ export KUBE_EDITOR="${EDITOR} -u NORC"
 
 # don't paginate if text fits one screen
 export PAGER='less -FX'
-
-# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
-export PATH="$PATH:$HOME/.rvm/bin"
-
-[[ -s "/Users/jedge/.gvm/scripts/gvm" ]] && source "/Users/jedge/.gvm/scripts/gvm"
