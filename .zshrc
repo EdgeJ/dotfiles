@@ -126,6 +126,57 @@ EOF
     ruby -e "${ruby_cmd}"
 }
 
+addpathprefix() {
+    if [[ $# -ne 1 ]]; then
+        return
+    fi
+    export PATH="${1}:${PATH}"
+}
+
+addpathsuffix() {
+    if [[ $# -ne 1 ]]; then
+        return
+    fi
+    export PATH="${PATH}:${1}"
+}
+
+rempath() {
+    if [[ $# -ne 1 ]]; then
+        return
+    fi
+    export PATH="${PATH/${1}:/}"
+}
+
+switch-go() {
+    local go_version=$1
+    local go_cmd="go${go_version}"
+    local default_gopath=${HOME}/go
+
+    if [[ "${go_version:-unset}" == "unset" ]]; then
+        printf "Missing version. Expected semver or \"latest\".\n"
+        return 1
+    fi
+    if [[ "${go_version}" == "latest" ]]; then
+        rempath "${GOROOT}/bin"
+        rempath "${GOPATH}/bin"
+        addpathsuffix "${default_gopath}/bin"
+        unset GOROOT
+        unset GOPATH
+        return 0
+    fi
+    if ! command -v ${go_cmd} &>/dev/null; then
+        go download golang.org/dl/go${go_version}@latest &&
+        ${go_cmd} download
+    fi
+    export GOROOT=$(${go_cmd} env GOROOT)
+    export GOPATH=${HOME}/${go_cmd}
+
+    mkdir -p ${GOPATH}/{bin,pkg,src}
+    rempath "${default_gopath}/bin"
+    addpathprefix "${GOROOT}/bin"
+    addpathprefix "${GOPATH}/bin"
+}
+
 # docker autocomplete
 if [[ -d /Applications/Docker.app ]] && [[ ! -f /usr/local/share/zsh/site-functions/docker* ]]; then
     ln -sfn /Applications/Docker.app/Contents/Resources/etc/*.zsh-completion /usr/local/share/zsh/site-functions/
