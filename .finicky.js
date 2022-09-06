@@ -15,6 +15,8 @@ module.exports = {
       match: [
         "google.com/*", // match google.com urls
         "*.google.com/*", // match google.com subdomains
+        "vsphere*", // match vmware vsphere urls
+        "vcenter*",
       ],
       browser: "Google Chrome"
     }

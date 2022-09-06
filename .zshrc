@@ -165,7 +165,7 @@ switch-go() {
         return 0
     fi
     if ! command -v ${go_cmd} &>/dev/null; then
-        go download golang.org/dl/go${go_version}@latest &&
+        go install golang.org/dl/go${go_version}@latest &&
         ${go_cmd} download
     fi
     export GOROOT=$(${go_cmd} env GOROOT)
