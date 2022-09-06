@@ -9,7 +9,7 @@
 [pull]
 	rebase = true
 [push]
-	default = current
+	autoSetupRemote = true
 [fetch]
 	prune = true
 [core]
