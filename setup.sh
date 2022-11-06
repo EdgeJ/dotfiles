@@ -5,16 +5,22 @@ set -o errexit
 set -o nounset
 set -o pipefail
 
+prompt () {
+    printf -- "%s [y/N]\n" "$*"
+    read -r ans
+    if [[ "${ans}" == "y" ]] || [[ "${ans}" == "Y" ]]; then
+        return 0
+    fi
+    return 1
+}
+
 # install homebrew
 if ! command -v brew &>/dev/null; then
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
 
 # brew install
-echo "Install/Update Homebrew packages? [y/N]"
-read -r brew_install
-
-if [[ "${brew_install}" == "y" ]] || [[ "${brew_install}" == "Y" ]]; then
+if prompt "Install/Update Homebrew packages?"; then
     /usr/local/bin/brew update --force
     /usr/local/bin/brew bundle || true
 fi
@@ -31,12 +37,12 @@ if ! [[ -f ~/.vim/autoload/plug.vim ]]; then
 fi
 
 # install livedown for md preview
-if ! command -v livedown &>/dev/null; then
+if prompt "Install livedown?"; then
     npm install -g livedown
 fi
 
 # install docker-langserver for vim completions
-if ! command -v docker-langserver &>/dev/null; then
+if prompt "Install docker-langserver?"; then
     npm install -g dockerfile-language-server-nodejs
 fi
 
