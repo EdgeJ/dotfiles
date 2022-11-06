@@ -44,12 +44,13 @@ SPACESHIP_PROMPT_ORDER=(
   git           # Git section (git_branch + git_status)
   golang        # Go section
   docker        # Docker section
-  kubectl       # kubectl context
+  kubectl
   venv          # virtualenv section
   terraform     # Terraform workspace section
   line_sep      # Line break
   char          # Prompt character
 )
+
 
 ## autosuggest settings
 ZSH_AUTOSUGGEST_STRATEGY=(completion history)
@@ -64,12 +65,15 @@ plugins=(
     git-extras
     helm
     jsontools
-    kubectl
     rake
     z
     zsh-autosuggestions
     $DISTPLUGINS[@]
 )
+
+if command -v kubectl &>/dev/null; then
+    plugins+=(kubectl)
+fi
 
 # paths for oh-my-zsh installation
 export ZSH=${HOME}/.oh-my-zsh
@@ -187,7 +191,7 @@ if command -v jenv &>/dev/null; then
     eval "$(jenv init -)"
 
     # add to the PATH for jenv and homebrewed binaries
-    export PATH="${HOME}/.jenv/bin/:${PATH}"
+    addpathprefix "${HOME}/.jenv/bin/"
 fi
 
 # cache terraform providers
@@ -198,15 +202,19 @@ fi
 
 if [[ "${DIST}" == "mac" ]]; then
     # add to PATH for homebrewed binaries
-    export PATH="/usr/local/sbin:${PATH}"
+    addpathprefix "/usr/local/sbin"
 fi
 
 if [[ -d ${HOME}/go/bin ]]; then
-    export PATH="${PATH}:${HOME}/go/bin"
+    addpathsuffix "${HOME}/go/bin"
 fi
 
 if [[ -d ${HOME}/.krew/bin ]]; then
-    export PATH="${PATH}:${HOME}/.krew/bin"
+    addpathsuffix "${HOME}/.krew/bin"
+fi
+
+if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
+    addpathprefix /home/linuxbrew/.linuxbrew/bin
 fi
 
 # default editor settings
