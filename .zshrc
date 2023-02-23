@@ -182,8 +182,8 @@ switch-go() {
 }
 
 # docker autocomplete
-if [[ -d /Applications/Docker.app ]] && [[ ! -f /usr/local/share/zsh/site-functions/docker* ]]; then
-    ln -sfn /Applications/Docker.app/Contents/Resources/etc/*.zsh-completion /usr/local/share/zsh/site-functions/
+if [[ -d /Applications/Docker.app ]] && [[ ! -f /opt/homebrew/share/zsh/site-functions/docker* ]]; then
+    ln -sfn /Applications/Docker.app/Contents/Resources/etc/*.zsh-completion /opt/homebrew/share/zsh/site-functions/
 fi
 
 if command -v jenv &>/dev/null; then
@@ -202,7 +202,7 @@ fi
 
 if [[ "${DIST}" == "mac" ]]; then
     # add to PATH for homebrewed binaries
-    addpathprefix "/usr/local/sbin"
+    addpathprefix "/opt/homebrew/sbin"
 fi
 
 if [[ -d ${HOME}/go/bin ]]; then
