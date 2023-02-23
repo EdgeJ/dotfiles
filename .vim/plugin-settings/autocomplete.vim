@@ -26,13 +26,13 @@ let g:ycm_collect_identifiers_from_tags_files = 1
 let g:ycm_language_server = [
   \   {
   \     'name': 'bash',
-  \     'cmdline': [ '/usr/local/bin/bash-language-server', 'start' ],
+  \     'cmdline': [ '/opt/homebrew/bin/bash-language-server', 'start' ],
   \     'filetypes': [ 'sh', 'bash' ],
   \   },
   \   {
   \     'name': 'docker',
   \     'filetypes': [ 'dockerfile' ],
-  \     'cmdline': [ '/usr/local/bin/docker-langserver', '--stdio' ],
+  \     'cmdline': [ '/opt/homebrew/bin/docker-langserver', '--stdio' ],
   \   }
   \ ]
 
