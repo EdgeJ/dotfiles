@@ -21,8 +21,8 @@ fi
 
 # brew install
 if prompt "Install/Update Homebrew packages?"; then
-    /usr/local/bin/brew update --force
-    /usr/local/bin/brew bundle || true
+    /opt/homebrew/bin/brew update --force
+    /opt/homebrew/bin/brew bundle || true
 fi
 
 # install oh-my-zsh
