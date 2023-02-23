@@ -46,6 +46,13 @@ if prompt "Install docker-langserver?"; then
     npm install -g dockerfile-language-server-nodejs
 fi
 
+# install powerline fonts
+if prompt "Install Powerline fonts?"; then
+    git clone git@github.com:powerline/fonts.git --depth=1
+    pushd fonts && ./install.sh
+    popd && rm -rf fonts
+fi
+
 # symlink files
 for dotfile in .finicky.js .gitconfig .gitignore_global .gvimrc .vimrc .zshrc; do
     ln -sfn "$(pwd)/${dotfile}" ~/${dotfile}
