@@ -1,3 +1,25 @@
+# Path management helper funcs
+addpathprefix() {
+    if [[ $# -ne 1 ]]; then
+        return
+    fi
+    export PATH="${1}:${PATH}"
+}
+
+addpathsuffix() {
+    if [[ $# -ne 1 ]]; then
+        return
+    fi
+    export PATH="${PATH}:${1}"
+}
+
+rempath() {
+    if [[ $# -ne 1 ]]; then
+        return
+    fi
+    export PATH="${PATH/${1}:/}"
+}
+
 # figure out what dist type we're on
 case $(uname -s) in
     Darwin)
@@ -27,6 +49,18 @@ if [[ "${DIST}" == "wsl" ]]; then
     export LIBGL_ALWAYS_INDIRECT=1
 fi
 
+# Setup homebrew if installed
+if command -v brew &>/dev/null; then
+    # Add homebrew completions
+    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+
+    # docker autocomplete
+    if [[ -d /Applications/Docker.app ]] && [[ ! -f $(brew --prefix)/share/zsh/site-functions/docker* ]]; then
+        ln -sfn /Applications/Docker.app/Contents/Resources/etc/*.zsh-completion $(brew --prefix)/share/zsh/site-functions/
+    fi
+
+    addpathprefix "$(brew --prefix)/bin"
+fi
 
 # Set name of the theme to load.
 ZSH_THEME="spaceship"
@@ -134,27 +168,6 @@ EOF
     ruby -e "${ruby_cmd}"
 }
 
-addpathprefix() {
-    if [[ $# -ne 1 ]]; then
-        return
-    fi
-    export PATH="${1}:${PATH}"
-}
-
-addpathsuffix() {
-    if [[ $# -ne 1 ]]; then
-        return
-    fi
-    export PATH="${PATH}:${1}"
-}
-
-rempath() {
-    if [[ $# -ne 1 ]]; then
-        return
-    fi
-    export PATH="${PATH/${1}:/}"
-}
-
 switch-go() {
     local go_version=$1
     local go_cmd="go${go_version}"
@@ -185,16 +198,11 @@ switch-go() {
     addpathprefix "${GOPATH}/bin"
 }
 
-# docker autocomplete
-if [[ -d /Applications/Docker.app ]] && [[ ! -f /opt/homebrew/share/zsh/site-functions/docker* ]]; then
-    ln -sfn /Applications/Docker.app/Contents/Resources/etc/*.zsh-completion /opt/homebrew/share/zsh/site-functions/
-fi
-
 if command -v jenv &>/dev/null; then
     # jenv Java management
     eval "$(jenv init -)"
 
-    # add to the PATH for jenv and homebrewed binaries
+    # add to the PATH for jenv binaries
     addpathprefix "${HOME}/.jenv/bin/"
 fi
 
@@ -204,21 +212,12 @@ if command -v terraform &>/dev/null; then
     mkdir -p $TF_PLUGIN_CACHE_DIR
 fi
 
-if [[ "${DIST}" == "mac" ]]; then
-    # add to PATH for homebrewed binaries
-    addpathprefix "/opt/homebrew/sbin"
-fi
-
 if [[ -d ${HOME}/go/bin ]]; then
     addpathsuffix "${HOME}/go/bin"
 fi
 
 if [[ -d ${HOME}/.krew/bin ]]; then
     addpathsuffix "${HOME}/.krew/bin"
-fi
-
-if [[ -d /home/linuxbrew/.linuxbrew/bin ]]; then
-    addpathprefix /home/linuxbrew/.linuxbrew/bin
 fi
 
 # default editor settings
