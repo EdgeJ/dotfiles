@@ -94,24 +94,18 @@ ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
 # enable plugins
 
 plugins=(
+    asdf
     aws
     docker
     git-extras
     helm
     jsontools
+    kubectl
     rake
     z
     zsh-autosuggestions
     $DISTPLUGINS[@]
 )
-
-if command -v kubectl &>/dev/null; then
-    plugins+=(kubectl)
-fi
-
-if command -v asdf &>/dev/null; then
-    plugins+=(asdf)
-fi
 
 # paths for oh-my-zsh installation
 export ZSH=${HOME}/.oh-my-zsh
