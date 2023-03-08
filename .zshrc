@@ -80,6 +80,7 @@ SPACESHIP_PROMPT_ORDER=(
   docker        # Docker section
   kubectl
   venv          # virtualenv section
+  ruby
   terraform     # Terraform workspace section
   line_sep      # Line break
   char          # Prompt character
