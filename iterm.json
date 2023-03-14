@@ -12,7 +12,7 @@
     "Red Component" : 0.3333333432674408,
     "Blue Component" : 1
   },
-  "Normal Font" : "RobotoMonoForPowerline-Regular 14",
+  "Normal Font" : "RobotoMonoForPowerline-Regular 12",
   "Draw Powerline Glyphs" : false,
   "Bold Color" : {
     "Green Component" : 1,
@@ -63,7 +63,6 @@
   "Prompt Before Closing 2" : false,
   "BM Growl" : true,
   "Mouse Reporting" : true,
-  "Command" : "\/usr\/local\/bin\/zsh",
   "Description" : "Default",
   "Screen" : -1,
   "Selection Color" : {
@@ -79,7 +78,7 @@
     "Red Component" : 1,
     "Blue Component" : 1
   },
-  "Custom Command" : "Custom Shell",
+  "Custom Command" : "No",
   "ASCII Anti Aliased" : true,
   "Non Ascii Font" : "Monaco 12",
   "Vertical Spacing" : 1,
