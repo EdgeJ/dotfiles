@@ -193,14 +193,6 @@ switch-go() {
     addpathprefix "${GOPATH}/bin"
 }
 
-if command -v jenv &>/dev/null; then
-    # jenv Java management
-    eval "$(jenv init -)"
-
-    # add to the PATH for jenv binaries
-    addpathprefix "${HOME}/.jenv/bin/"
-fi
-
 # cache terraform providers
 if command -v terraform &>/dev/null; then
     export TF_PLUGIN_CACHE_DIR=$HOME/.terraform/plugins
