@@ -25,6 +25,7 @@ case $(uname -s) in
     Darwin)
         DIST=mac
         DISTPLUGINS=(brew macos)
+        HOMEBREW_PREFIX=/opt/homebrew
         ;;
     Linux)
         if [[ $(uname -r) =~ .*Microsoft ]]; then
@@ -34,6 +35,7 @@ case $(uname -s) in
             DIST=linux
             DISTPLUGINS=()
         fi
+        HOMEBREW_PREFIX=/home/linuxbrew/.linuxbrew
         ;;
     *)
         echo "Could not determine your OS, defaulting to Linux"
@@ -50,16 +52,16 @@ if [[ "${DIST}" == "wsl" ]]; then
 fi
 
 # Setup homebrew if installed
-if command -v brew &>/dev/null; then
+if [[ -f ${HOMEBREW_PREFIX}/bin/brew ]]; then
     # Add homebrew completions
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    FPATH="${HOMEBREW_PREFIX}/share/zsh/site-functions:${FPATH}"
 
     # docker autocomplete
-    if [[ -d /Applications/Docker.app ]] && [[ ! -f $(brew --prefix)/share/zsh/site-functions/docker* ]]; then
-        ln -sfn /Applications/Docker.app/Contents/Resources/etc/*.zsh-completion $(brew --prefix)/share/zsh/site-functions/
+    if [[ -d /Applications/Docker.app ]] && [[ ! -f ${HOMEBREW_PREFIX}/share/zsh/site-functions/docker* ]]; then
+        ln -sfn /Applications/Docker.app/Contents/Resources/etc/*.zsh-completion ${HOMEBREW_PREFIX}/share/zsh/site-functions/
     fi
 
-    addpathprefix "$(brew --prefix)/bin"
+    addpathprefix "${HOMEBREW_PREFIX}/bin"
 fi
 
 # Set name of the theme to load.
