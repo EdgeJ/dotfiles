@@ -15,3 +15,5 @@
 	pager = less -FX
 [log]
 	decorate = short
+[rerere]
+	enabled = true
