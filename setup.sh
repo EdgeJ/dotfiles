@@ -54,7 +54,7 @@ if prompt "Install Powerline fonts?"; then
 fi
 
 # symlink files
-for dotfile in .finicky.js .gitconfig .gitignore_global .gvimrc .vimrc .zshrc; do
+for dotfile in .finicky.js .gitconfig .gitconfig-github .gitignore_global .gvimrc .vimrc .zshrc; do
     ln -sfn "$(pwd)/${dotfile}" ~/${dotfile}
 done
 
