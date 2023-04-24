@@ -1,5 +1,5 @@
 "set gvim color scheme
-colorscheme darkblue
+colorscheme dracula
 "set gvim font
 if g:os == "Darwin"
     set guifont=Meslo\ LG\ L\ Regular\ for\ Powerline:h12
