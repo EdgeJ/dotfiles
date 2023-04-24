@@ -35,6 +35,11 @@ if ! [[ -f ~/.vim/autoload/plug.vim ]]; then
     mkdir -p ~/.vim/autoload
     curl -fLo ~/.vim/autoload/plug.vim https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 fi
+if ! [[ -f "${XDG_DATA_HOME:-$HOME}/.local/share/nvim/site/autoload/plug.vim" ]]; then
+    mkdir -p "${XDG_DATA_HOME:-$HOME}/.local/share/nvim/site/autoload/"
+    curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim \
+       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+fi
 
 # install livedown for md preview
 if prompt "Install livedown?"; then
@@ -62,6 +67,7 @@ mkdir -p ~/{.config,.vim,.vim/swapfiles,.zshrc.d}
 
 ln -sfn "$(pwd)/.config/pep8" ~/.config/pep8
 ln -sfn "$(pwd)/.config/yamllint" ~/.config/yamllint
+ln -sfn "$(pwd)/.config/nvim" ~/.config/nvim
 ln -sfn "$(pwd)/.vim/plugin-settings" ~/.vim/plugin-settings
 ln -sfn "$(pwd)/.vim/wrappers" ~/.vim/wrappers
 
