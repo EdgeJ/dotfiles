@@ -31,8 +31,18 @@ let g:ycm_language_server = [
   \   },
   \   {
   \     'name': 'docker',
-  \     'filetypes': [ 'dockerfile' ],
   \     'cmdline': [ '/opt/homebrew/bin/docker-langserver', '--stdio' ],
+  \     'filetypes': [ 'dockerfile' ],
+  \   },
+  \   {
+  \     'name': 'jsonnet-ls',
+  \     'cmdline': [ '/usr/local/bin/jsonnet-language-server', '--lint' ],
+  \     'filetypes': [ 'jsonnet' ],
+  \   },
+  \   {
+  \     'name': 'terraform-ls',
+  \     'cmdline': [ '/opt/homebrew/bin/terraform-ls', 'serve' ],
+  \     'filetypes': [ 'terraform' ],
   \   }
   \ ]
 
