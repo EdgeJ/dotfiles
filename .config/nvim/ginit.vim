@@ -6,5 +6,3 @@ set guifont=Meslo\ LG\ L\ Regular\ for\ Powerline:h12
 
 set guitablabel=%t
 set mousehide " hide the mouse cursor when typing
-
-let g:airline_powerline_fonts = 1

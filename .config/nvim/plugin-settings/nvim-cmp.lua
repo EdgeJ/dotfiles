@@ -1,6 +1,7 @@
 -- Set up nvim-cmp.
 local cmp = require'cmp'
---local cmp_autopairs = require'nvim-autopairs.completion.cmp'
+require'nvim-autopairs'.setup{}
+local cmp_autopairs = require'nvim-autopairs.completion.cmp'
 
 cmp.setup({
   snippet = {
@@ -22,20 +23,14 @@ cmp.setup({
   }),
   sources = cmp.config.sources({
     { name = 'buffer' },
+    { name = 'cmdline' },
     { name = 'nvim_lsp' },
-    { name = 'nvim_lsp_signature_help' },
+    -- { name = 'nvim_lsp_signature_help' },
+    { name = 'path' },
     { name = 'vsnip' },
   })
-})
 
--- Set configuration for specific filetype.
---cmp.setup.filetype('gitcommit', {
---  sources = cmp.config.sources({
---    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
---  }, {
---    { name = 'buffer' },
---  })
---})
+})
 
 -- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
 cmp.setup.cmdline({ '/', '?' }, {
@@ -49,14 +44,13 @@ cmp.setup.cmdline({ '/', '?' }, {
 cmp.setup.cmdline(':', {
   mapping = cmp.mapping.preset.cmdline(),
   sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
+    { name = 'path' },
     { name = 'cmdline' }
   })
 })
 
 -- Insert parens after func completion
---cmp.event:on(
---    'confirm_done',
---    cmp_autopairs.on_confirm_done()
---)
+cmp.event:on(
+    'confirm_done',
+    cmp_autopairs.on_confirm_done()
+)
