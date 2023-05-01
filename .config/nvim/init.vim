@@ -12,7 +12,13 @@ set incsearch
 syntax on
 set number
 
+"set tabs to 4 spaces"
 set tabstop=4 shiftwidth=4 softtabstop=4 expandtab
+"with a few exceptions"
+au FileType html,htmldjango,javascript,ruby,sh,yaml
+    \ set tabstop=2 shiftwidth=2 softtabstop=2
+au FileType go
+    \ set tabstop=8 shiftwidth=8 softtabstop=8 noexpandtab
 
 let g:editorconfig = v:true
 
@@ -23,6 +29,7 @@ set backspace=indent,eol,start
 call plug#begin()
 
 Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'editorconfig/editorconfig-vim' " while still using nvim 0.8
 Plug 'hashivim/vim-terraform'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-cmdline'

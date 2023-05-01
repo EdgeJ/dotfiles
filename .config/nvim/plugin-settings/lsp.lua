@@ -1,7 +1,16 @@
 local lspconfig = require('lspconfig')
 
+lspconfig.ansiblels.setup{
+    settings = {
+        filetypes = {
+            'yaml.ansible',
+            'yaml',
+        },
+    },
+}
 lspconfig.bashls.setup{}
 lspconfig.dockerls.setup{}
+lspconfig.golangci_lint_ls.setup{}
 lspconfig.gopls.setup{
     on_attach = function(client)
         require('lsp_signature').on_attach() -- Use signature completion
