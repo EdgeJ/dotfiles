@@ -74,3 +74,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
     end, opts)
   end,
 })
+
+-- Fix for bug in yaml-lint-server returning "&emsp;" instead of spaces
+-- https://github.com/redhat-developer/yaml-language-server/pull/844
+local function hover_wrapper(err, request, ctx, config)
+  local bufnr, winnr = vim.lsp.handlers.hover(err, request, ctx, config)
+  if bufnr then
+    local contents = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+    contents = vim.tbl_map(
+      function(line)
+        return string.gsub(line, "&emsp;", "")
+      end,
+      contents
+    )
+    contents = vim.lsp.util.trim_empty_lines(contents)
+    vim.api.nvim_buf_set_option(bufnr, 'modifiable', true)
+    vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, contents)
+    vim.api.nvim_buf_set_option(bufnr, 'modifiable', false)
+    vim.api.nvim_win_set_height(winnr, #contents)
+  end
+end
+
+vim.lsp.handlers["textDocument/hover"] = hover_wrapper
