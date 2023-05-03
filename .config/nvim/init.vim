@@ -28,8 +28,9 @@ set backspace=indent,eol,start
 "plugin settings
 call plug#begin()
 
+Plug 'b0o/schemastore.nvim'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'editorconfig/editorconfig-vim' " while still using nvim 0.8
+Plug 'gpanders/editorconfig.nvim' " while still using nvim 0.8
 Plug 'hashivim/vim-terraform'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-cmdline'
@@ -38,6 +39,7 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
+Plug 'neomake/neomake'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ray-x/lsp_signature.nvim'

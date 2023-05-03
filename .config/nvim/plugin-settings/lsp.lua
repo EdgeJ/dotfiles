@@ -1,4 +1,7 @@
 local lspconfig = require('lspconfig')
+local schemastore = require('schemastore').yaml.schemas()
+-- Add support for gitlab-ci yaml with named configs
+schemastore['https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json'] = "/.gitlab-ci*.yml"
 
 lspconfig.ansiblels.setup{
     settings = {
@@ -22,6 +25,17 @@ lspconfig.jsonnet_ls.setup{
     end,
 }
 lspconfig.terraformls.setup{}
+lspconfig.yamlls.setup{
+    settings = {
+        yaml = {
+            schemas = schemastore,
+        },
+    },
+}
+
+-- Show line diagnostics automatically in hover window
+vim.o.updatetime = 250
+vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
