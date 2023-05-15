@@ -4,12 +4,10 @@ local schemastore = require('schemastore').yaml.schemas()
 schemastore['https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json'] = "/.gitlab-ci*.yml"
 
 lspconfig.ansiblels.setup{
-    settings = {
-        filetypes = {
-            'yaml.ansible',
-            'yaml',
-        },
-    },
+  filetypes = {
+    'yaml.ansible',
+    'yaml',
+  },
 }
 lspconfig.bashls.setup{}
 lspconfig.dockerls.setup{}

@@ -39,7 +39,6 @@ Plug 'hrsh7th/cmp-path'
 Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
-Plug 'neomake/neomake'
 Plug 'neovim/nvim-lspconfig'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ray-x/lsp_signature.nvim'
@@ -58,3 +57,7 @@ for settings in split(glob('~/.config/nvim/plugin-settings/*'), '\n')
 endfor
 
 let g:airline_powerline_fonts = 1
+
+if exists("g:neovide")
+    exe 'source' '~/.config/nvim/ginit.vim'
+end
