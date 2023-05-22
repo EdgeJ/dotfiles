@@ -2,11 +2,11 @@ local lspconfig = require('lspconfig')
 local schemastore = require('schemastore').yaml.schemas()
 -- Add support for gitlab-ci yaml with named configs
 schemastore['https://gitlab.com/gitlab-org/gitlab/-/raw/master/app/assets/javascripts/editor/schema/ci.json'] = "/.gitlab-ci*.yml"
+schemastore['https://raw.githubusercontent.com/yannh/kubernetes-json-schema/master/v1.23.0-standalone/pod.json'] = "*.k8s.yaml"
 
 lspconfig.ansiblels.setup{
   filetypes = {
-    'yaml.ansible',
-    'yaml',
+      'yaml.ansible',
   },
 }
 lspconfig.bashls.setup{}
@@ -17,12 +17,17 @@ lspconfig.gopls.setup{
         require('lsp_signature').on_attach() -- Use signature completion
     end,
 }
+lspconfig.jsonls.setup{}
 lspconfig.jsonnet_ls.setup{
     on_attach = function(client)
         require('lsp_signature').on_attach() -- Use signature completion
     end,
 }
-lspconfig.terraformls.setup{}
+lspconfig.terraformls.setup{
+    on_attach = function(client)
+        require('lsp_signature').on_attach() -- Use signature completion
+    end,
+}
 lspconfig.yamlls.setup{
     settings = {
         yaml = {
