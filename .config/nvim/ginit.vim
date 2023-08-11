@@ -4,6 +4,9 @@ colorscheme dracula
 "set gvim font
 set guifont=Meslo\ LG\ L\ for\ Powerline:h12
 
+"remove pipe chars from vertical borders
+set fillchars+=vert:\ 
+
 let g:neovide_hide_mouse_when_typing = v:true
 let g:neovide_remember_window_size = v:true
 let g:neovide_cursor_animation_length = 0 "disable cursor animation"
