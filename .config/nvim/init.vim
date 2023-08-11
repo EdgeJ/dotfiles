@@ -30,7 +30,6 @@ call plug#begin()
 
 Plug 'b0o/schemastore.nvim'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'gpanders/editorconfig.nvim' " while still using nvim 0.8
 Plug 'hashivim/vim-terraform'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-cmdline'
@@ -40,10 +39,11 @@ Plug 'hrsh7th/cmp-vsnip'
 Plug 'hrsh7th/nvim-cmp'
 Plug 'hrsh7th/vim-vsnip'
 Plug 'neovim/nvim-lspconfig'
+Plug 'nvim-tree/nvim-web-devicons' " optiona
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'ray-x/lsp_signature.nvim'
 Plug 'ruanyl/vim-gh-line'
-Plug 'scrooloose/nerdtree'
 Plug 'sodapopcan/vim-twiggy'
 Plug 'tpope/vim-fugitive'
 Plug 'vim-airline/vim-airline'
