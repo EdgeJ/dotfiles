@@ -31,3 +31,11 @@ lua vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
 "macOS meta key
 lua vim.keymap.set('n', '<D-t>', ':tabnew<CR>')
 lua vim.keymap.set('n', '<D-n>', ':!neovide<CR><CR>')
+
+"keymaps for scaling fonts
+let g:neovide_scale_factor=1.0
+function! ChangeScaleFactor(delta)
+  let g:neovide_scale_factor = g:neovide_scale_factor * a:delta
+endfunction
+nnoremap <expr><C-=> ChangeScaleFactor(1.25)
+nnoremap <expr><C--> ChangeScaleFactor(1/1.25)
