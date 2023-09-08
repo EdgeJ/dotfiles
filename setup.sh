@@ -51,11 +51,19 @@ if prompt "Install docker-langserver?"; then
     npm install -g dockerfile-language-server-nodejs
 fi
 
-# install powerline fonts
-if prompt "Install Powerline fonts?"; then
+# install hacked fonts for iterm, powerline, vim
+if prompt "Install hacked fonts?"; then
+    FONT_TEMP="$(mktemp -d)"
+    pushd "${FONT_TEMP}"
+    curl -fsSLO https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Monofur.zip
+    curl -fsSLOhttps://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/RobotoMono.zip
+    unzip Monofur.zip
+    unzip RobotoMono.zip
+    find . -name '*.ttf' -exec cp {} ~/Library/Fonts/ \;
+
     git clone git@github.com:powerline/fonts.git --depth=1
     pushd fonts && ./install.sh
-    popd && rm -rf fonts
+    popd && popd
 fi
 
 # symlink files

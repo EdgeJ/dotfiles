@@ -2,7 +2,7 @@
 set termguicolors
 colorscheme dracula
 "set gvim font
-set guifont=Meslo\ LG\ L\ for\ Powerline:h12
+set guifont=MesloLGL\ Nerd\ Font,Meslo\ LG\ L\ for\ Powerline:h12
 
 "remove pipe chars from vertical borders
 set fillchars+=vert:\ 
