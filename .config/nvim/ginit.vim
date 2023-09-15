@@ -22,10 +22,23 @@ autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tab
 "can be removed once https://github.com/neovide/neovide/issues/1477 is done
 autocmd FocusGained * checktime
 
+"terminal settings
+augroup neovim_terminal
+    autocmd!
+    " Enter Terminal-mode (insert) automatically
+    autocmd TermOpen * startinsert
+    " Disables number lines on terminal buffers
+    autocmd TermOpen * :set nonumber norelativenumber
+    " allows you to use Ctrl-c on terminal window
+    autocmd TermOpen * nnoremap <buffer> <C-c> i<C-c>
+augroup END
+
+noremap <F7> :botright new<CR><ESC>:terminal<CR>
+
 "keymaps for copy/paste in macOS
 lua vim.keymap.set('v', '<D-c>', '"+y') -- Copy
 lua vim.keymap.set({'n', 'v'}, '<D-v>', '"+P') -- Paste normal and visual mode
-lua vim.keymap.set('i', '<D-v>', '<ESC>gPa') -- Paste insert mode
+lua vim.keymap.set('i', '<D-v>', '<ESC>lPa') -- Paste insert mode
 lua vim.keymap.set('c', '<D-v>', '<C-R>+') -- Paste command mode
 
 "macOS meta key
