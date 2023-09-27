@@ -103,7 +103,6 @@ ZSH_AUTOSUGGEST_HISTORY_IGNORE="cd *"
 # enable plugins
 
 plugins=(
-    asdf
     aws
     docker
     git-extras
