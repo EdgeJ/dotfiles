@@ -30,7 +30,6 @@ call plug#begin()
 
 Plug 'b0o/schemastore.nvim'
 Plug 'dracula/vim', { 'as': 'dracula' }
-Plug 'hashivim/vim-terraform'
 Plug 'hrsh7th/cmp-buffer'
 Plug 'hrsh7th/cmp-cmdline'
 Plug 'hrsh7th/cmp-nvim-lsp'
