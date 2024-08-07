@@ -150,8 +150,14 @@ alias h="history | tail -n 10"
 alias mybranches="git branch -r | grep ${USER}"
 alias forcepush="git push --force-with-lease"
 alias curl="noglob curl"
-alias readme="livedown start README.md --open --browser \"'safari'\" &|"
 alias dockerconnect="nc -U ~/Library/Containers/com.docker.docker/Data/debug-shell.sock"
+
+readme() {
+    local markdown_file
+    markdown_file=${1:-README.md}
+
+    livedown start $markdown_file --open --browser \"'safari'\" &|
+}
 
 cleanup-git-branches() {
     local ruby_cmd=$(
