@@ -28,6 +28,7 @@ lspconfig.terraformls.setup{
         require('lsp_signature').on_attach() -- Use signature completion
     end,
 }
+lspconfig.tflint.setup{}
 lspconfig.yamlls.setup{
     settings = {
         yaml = {
