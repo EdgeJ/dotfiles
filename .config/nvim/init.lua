@@ -11,6 +11,7 @@ vim.opt.incsearch = true
 --- display settings
 vim.opt.number = true
 vim.cmd('syntax on')
+vim.opt.listchars = 'tab:<->,trail:-,eol:$'
 
 --- space settings
 vim.opt.expandtab = true
@@ -68,4 +69,3 @@ vim.g.airline_powerline_fonts = 1
 if vim.g.neovide then
     vim.cmd('source ~/.config/nvim/ginit.vim')
 end
-
