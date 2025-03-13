@@ -159,23 +159,6 @@ readme() {
     livedown start $markdown_file --open --browser \"'safari'\" &|
 }
 
-cleanup-git-branches() {
-    local ruby_cmd=$(
-        cat <<'EOF'
-local_branches = `git branch`.split
-local_branches.delete('*')
-remote_branches = `git branch -r`.split
-remote_branches.each { |branch| branch.gsub!('origin/', '') }
-
-local_branches.each do |branch|
-  system('git', 'branch', '-D', branch) unless remote_branches.include? branch
-end
-EOF
-    )
-
-    ruby -e "${ruby_cmd}"
-}
-
 switch-go() {
     local go_version=$1
     local go_cmd="go${go_version}"

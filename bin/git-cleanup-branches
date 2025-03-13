@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+
+local_branches = `git branch`.split
+local_branches.delete('*')
+local_branches.delete('+')
+remote_branches = `git branch -r`.split
+remote_branches.each { |branch| branch.gsub!('origin/', '') }
+
+local_branches.each do |branch|
+  system('git', 'branch', '-D', branch) unless remote_branches.include? branch
+end
