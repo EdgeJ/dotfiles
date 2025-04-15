@@ -67,5 +67,5 @@ vim.g.airline_powerline_fonts = 1
 
 -- load gui settings if running in neovide
 if vim.g.neovide then
-    vim.cmd('source ~/.config/nvim/ginit.vim')
+    require('ginit')
 end
