@@ -62,6 +62,7 @@ require('plugin_settings/lsp')
 require('plugin_settings/nvim-cmp')
 require('plugin_settings/nvim-tree')
 require('plugin_settings/treesitter')
+require('plugin_settings/telescope')
 
 vim.g.airline_powerline_fonts = 1
 
