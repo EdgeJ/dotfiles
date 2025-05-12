@@ -4,6 +4,10 @@ require('gitlab').setup({
   },
   code_suggestions = {
     auto_filetypes = { 'go', 'python', 'sh', 'terraform' }, -- Default is { 'ruby' }
+  },
+  ghost_text = {
+    enabled = true,
+    stream = true
   }
 })
 
