@@ -151,6 +151,7 @@ alias mybranches="git branch -r | grep ${USER}"
 alias forcepush="git push --force-with-lease"
 alias curl="noglob curl"
 alias dockerconnect="nc -U ~/Library/Containers/com.docker.docker/Data/debug-shell.sock"
+alias neovide="neovide &"
 
 readme() {
     local markdown_file
